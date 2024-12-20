@@ -1,5 +1,21 @@
+---
+title: ""
+output: 
+  html_document: 
+    fig_height: 4
+    theme: spacelab
+editor_options: 
+  chunk_output_type: console
+---
 
-```{r, include=FALSE}
+## Setup
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE)
+```
+### Load packages
+
+```{r load-packages, message = FALSE}
 # Install the required R packages:
 install.packages(c("quantmod", "ggplot2", "dplyr", "tidyr", "rbcb"))X
 
@@ -9,11 +25,17 @@ library(ggplot2)   # For visualization
 library(dplyr)     # For data manipulation
 library(tidyr)     # For reshaping data
 library(rbcb)      # For SELIC data (from BCB API)
+```
 
-# Set global options
-knitr::opts_chunk$set(
-	echo = TRUE,
-	message = FALSE,
-	warning = FALSE
-)
+### Load data
+
+```{r load-data}
+# Adjust the date range as needed
+start_date <- as.Date("2010-01-01")
+end_date <- as.Date(Sys.Date())
+
+# Get IBOVESPA data
+getSymbols("^BVSP", src = "yahoo", from = start_date, to = end_date)
+ibovespa <- Cl(BVSP)  # Extract the closing prices
+ibovespa <- data.frame(Date = index(ibovespa), IBOVESPA = coredata(ibovespa))
 ```
