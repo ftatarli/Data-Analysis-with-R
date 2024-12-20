@@ -1,9 +1,8 @@
-```{r setup1, include=FALSE}
-# Install the required R packages:
-install.packages(c("quantmod", "ggplot2", "dplyr", "tidyr", "rbcb"))
-```
 
-```{r setup2, include=FALSE}
+```{r, include=FALSE}
+# Install the required R packages:
+install.packages(c("quantmod", "ggplot2", "dplyr", "tidyr", "rbcb"))X
+
 # Load necessary libraries
 library(quantmod)  # For stock data
 library(ggplot2)   # For visualization
