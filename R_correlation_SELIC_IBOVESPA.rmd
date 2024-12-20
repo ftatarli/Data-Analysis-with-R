@@ -1,1 +1,20 @@
+```{r setup1, include=FALSE}
+# Install the required R packages:
+install.packages(c("quantmod", "ggplot2", "dplyr", "tidyr", "rbcb"))
+```
 
+```{r setup2, include=FALSE}
+# Load necessary libraries
+library(quantmod)  # For stock data
+library(ggplot2)   # For visualization
+library(dplyr)     # For data manipulation
+library(tidyr)     # For reshaping data
+library(rbcb)      # For SELIC data (from BCB API)
+
+# Set global options
+knitr::opts_chunk$set(
+	echo = TRUE,
+	message = FALSE,
+	warning = FALSE
+)
+```
